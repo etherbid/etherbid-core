@@ -116,6 +116,16 @@ contract EtherBidCore {
     return _createBid(bounty, initialCountdown, applyIncrement, applyFees, initialPrice);
   }
 
+
+  function GetListBidLen(BidState state) public constant returns(uint256) {
+    return(BidStateList[uint256(state)].length);
+  }
+
+  function GetListBidID(BidState state, uint256 idx) public constant returns(uint256) {
+    return(BidStateList[uint256(state)][idx]);
+  }
+
+
   function GetBidStaticInfo(uint256 BidID) public constant returns(
     uint256 Bounty,
     int256 BaseCountdown,
