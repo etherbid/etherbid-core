@@ -49,9 +49,13 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
     "dotenv": "^2.0.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "reactstrap": "^4.8.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
