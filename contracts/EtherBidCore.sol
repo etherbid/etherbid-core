@@ -96,7 +96,8 @@ contract EtherBidCore {
     }
   }
 
-  function _updateBid(uint256 BidID) {
+
+  function _updateBid(uint256 BidID) internal {
     // TODO: Evaluate the use of SafeMath here.
     if (BidMap[BidID].State == BidState.Open && BidMap[BidID].LastTimestamp != block.timestamp) {
       uint256 Time = block.timestamp - BidMap[BidID].LastTimestamp;
