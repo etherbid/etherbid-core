@@ -38,7 +38,7 @@ class App extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col><ChainInfo /></Col>
+          <Col></Col>
         </Row>
         <Row>
           <Col><BidList /></Col>

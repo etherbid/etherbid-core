@@ -36,12 +36,13 @@ class ChainInfo extends Component {
     			this.totalBlocks += 1
     			this.totalTime += this.state.blockTime
 
-    			var block = web3.eth.getBlock(res)
-    			this.setState({
-    				blockNumber: block.number,
-    				blockHash: block.hash,
-    				blockTime: 0,
-    				blockTimeAvg: this.totalTime/this.totalBlocks
+    			web3.eth.getBlock(res).then((block) => {
+    				this.setState({
+    					blockNumber: block.number,
+    					blockHash: block.hash,
+    					blockTime: 0,
+    					blockTimeAvg: this.totalTime/this.totalBlocks
+    				})
     			})
     		}
     	})

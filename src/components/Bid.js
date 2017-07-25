@@ -25,6 +25,8 @@ class Bid extends Component {
     console.log("Loading Bid " + props.id)
     super(props)
 
+    this.BidApply = this.BidApply.bind(this);
+
     this.state = {
       id: props.id,
 
@@ -43,16 +45,25 @@ class Bid extends Component {
 
   componentWillMount() {
   	this.updateStaticInfo()
-  	this.interval = setInterval(() => this.setState({ currentCountdown: this.state.currentCountdown - 1}), 1000);
+  	this.updateDynamicInfo()
+
+  	this.interval = setInterval(() => {
+  		if (this.state.currentCountdown > 0) {
+  			this.setState({ currentCountdown: this.state.currentCountdown - 1})
+  		}
+  	}, 1000);
+
+  	// TODO: Implement update using events
   	getWeb3.then((res) => {
   		var web3 = res.web3
   		web3.eth.filter('latest').watch((error, result) => {
-  			this.updateStateDynamic()
+  			this.updateDynamicInfo()
   		})
   	})
   }
 
   updateStaticInfo() {
+  	console.log("updateStaticInfo " + this.state.id)
   	getWeb3.then((res) => {
      	var web3 = res.web3
 
@@ -74,6 +85,7 @@ class Bid extends Component {
   }
 
   updateDynamicInfo() {
+  	console.log("updateDynamicInfo " + this.state.id)
   	getWeb3.then((res) => {
      	var web3 = res.web3
 
